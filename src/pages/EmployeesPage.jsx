@@ -4,7 +4,7 @@ import EmployeeTable from '../components/EmployeeTable';
 import AddEmployee from '../components/AddEmployee';
 import { useDispatch, useSelector } from 'react-redux';
 import EditEmployee from '../components/EditEmployee';
-import { fetchEmployees, createEmployee, updateEmployee, deleteEmployee,clearEmployees } from '../store/employeeSlice';
+import { fetchEmployees, createEmployee, updateEmployee, deleteEmployee,clearEmployees,clearError } from '../store/employeeSlice';
 
 const EmployeesPage = () => {
     const { globalFilter } = useAppContext(); 
@@ -14,7 +14,7 @@ const EmployeesPage = () => {
     const [employeeToEdit, setEmployeeToEdit] = useState(null);
     const dispatch = useDispatch();
 
-    const { employees, loading , error } = useSelector((state) => state.employees);
+    const { employees, loading , error, } = useSelector((state) => state.employees);
 
     useEffect(() => {
         dispatch(fetchEmployees());
@@ -27,7 +27,11 @@ const EmployeesPage = () => {
       useEffect(() => {
         if (error) {
             alert(error); 
-  }
+        }
+
+            return () =>{
+                clearError()
+            }
         }, [error]);
 
     const handleSaveEmployee = (employeeData) => {
@@ -49,9 +53,16 @@ const EmployeesPage = () => {
     if (loading) {
         return <div className="loader">Loading Employees...</div>;
     }
-    if (error) {
-        alert("Error : " , error)
-    }
+
+    useEffect(() => {
+        if (error) {
+            alert(`Error: ${error}`);
+        }
+
+        clearError: (state) => {
+  state.error = null;
+}
+    }, [error]);
 
 
 

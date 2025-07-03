@@ -78,6 +78,9 @@ const employeeSlice = createSlice({
       state.employees = [];
       state.loading = false;
       state.error = null;
+    },
+    clearError: (state) => {
+      state.error = null;
     }
   },
   extraReducers: builder => {
@@ -100,10 +103,24 @@ const employeeSlice = createSlice({
       .addCase(createEmployee.fulfilled, (state) => {
         state.loading = false;
       })
+      .addCase(createEmployee.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
 
+      .addCase(createEmployee.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
 
+      
       .addCase(updateEmployee.fulfilled, (state) => {
         state.loading = false;
+      })
+
+      .addCase(updateEmployee.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Failed to update employee';
       })
 
       .addCase(deleteEmployee.fulfilled, (state) => {
