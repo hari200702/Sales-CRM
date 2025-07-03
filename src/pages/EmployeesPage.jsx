@@ -54,17 +54,6 @@ const EmployeesPage = () => {
         return <div className="loader">Loading Employees...</div>;
     }
 
-    useEffect(() => {
-        if (error) {
-            alert(`Error: ${error}`);
-        }
-
-        clearError: (state) => {
-  state.error = null;
-}
-    }, [error]);
-
-
 
 
     return (
