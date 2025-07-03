@@ -6,6 +6,7 @@ import DashBoardTable from '../components/DashBoardTable';
 import GlobalFilter from '../components/GlobalFilter';
 import ChartBar from "../components/ChartBar"
 import { useAppContext } from '../context/AppContext';
+import { FaMoneyBillWave, FaUserCheck, FaHandshake, FaTachometerAlt } from 'react-icons/fa';
 
 export const DashBoard = () => {
     const {globalFilter, setGlobalFilter} = useAppContext();
@@ -42,10 +43,10 @@ export const DashBoard = () => {
         <div className="breadcrumb">Home &gt; Dashboard</div>
 
         <div className="statsRow">
-            <div className="statBox"><div>Unassigned Leads</div><h2>{metrics.unassignedLeads?? 0}</h2></div>
-            <div className="statBox"><div>Assigned This Week</div><h2>{metrics.assignedThisWeek??0}</h2></div>
-            <div className="statBox"><div>Active Salespeople</div><h2>{metrics.activeSalespeople??0}</h2></div>
-            <div className="statBox"><div>Conversion Rate</div><h2>{metrics.conversionRate??0}%</h2></div>
+            <div className="statBox"><div><FaMoneyBillWave className="statIcon" /></div><div>Unassigned Leads</div><h2>{metrics.unassignedLeads?? 0}</h2></div>
+            <div className="statBox"><div><FaUserCheck className="statIcon" /></div><div>Assigned This Week</div><h2>{metrics.assignedThisWeek??0}</h2></div>
+            <div className="statBox"><div><FaHandshake className="statIcon" /></div><div>Active Salespeople</div><h2>{metrics.activeSalespeople??0}</h2></div>
+            <div className="statBox"><div><FaTachometerAlt className="statIcon" /></div><div>Conversion Rate</div><h2>{metrics.conversionRate??0}%</h2></div>
         </div>
 
         <div className="dashboardRow">

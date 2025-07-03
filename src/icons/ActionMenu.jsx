@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../App.css';
+import { FiEdit2, FiTrash2 } from 'react-icons/fi'; // Feather icons
 
 const ActionMenu = ({ row, onEdit, onDelete }) => {
   const [open, setOpen] = useState(false);
@@ -44,23 +45,25 @@ const ActionMenu = ({ row, onEdit, onDelete }) => {
         >
           <div
             className="menuItem"
-            style={{ padding: '6px 12px', cursor: 'pointer' }}
+            style={{ padding: '6px 12px', cursor: 'pointer', gap: '10px',display: 'flex',alignItems: 'center'}}
             onClick={() => {
               setOpen(false);
               onEdit?.(row.original);
             }}
           >
+            <FiEdit2 size={15} />
             Edit
           </div>
           <div
             className="menuItem"
-            style={{ padding: '6px 12px', cursor: 'pointer', color: 'red' }}
+            style={{ padding: '6px 12px', cursor: 'pointer', gap: '10px',display: 'flex',alignItems: 'center', color:'red' }}
             onClick={() => {
               setOpen(false);
               const employeeID = row.original._id
               onDelete?.(employeeID);
             }}
           >
+            <FiTrash2 size={15} />
             Delete
           </div>
         </div>
