@@ -129,5 +129,5 @@ const employeeSlice = createSlice({
   }
 });
 
-export const { clearEmployees } = employeeSlice.actions;
+export const { clearEmployees,clearError } = employeeSlice.actions;
 export default employeeSlice.reducer;
