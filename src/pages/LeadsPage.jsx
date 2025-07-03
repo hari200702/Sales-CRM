@@ -46,7 +46,7 @@ const LeadsPage = () => {
         return <div className="loader">Loading Leads...</div>;
     }
     if (error) {
-        return <div className="error">Error: {error}</div>;
+        alert("Error : " , error)
     }
 
     return (

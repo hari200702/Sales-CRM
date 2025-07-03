@@ -50,7 +50,7 @@ const EmployeesPage = () => {
         return <div className="loader">Loading Employees...</div>;
     }
     if (error) {
-        return <div className="error">Error: {error}</div>;
+        alert("Error : " , error)
     }
 
 

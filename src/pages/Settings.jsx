@@ -70,7 +70,7 @@ const Settings = () => {
         return <div className="loader">Loading Profile...</div>;
     }
     if (error) {
-        return <div className="error">Error: {error}</div>;
+        alert("Error : " , error)
     }
 
   return (
