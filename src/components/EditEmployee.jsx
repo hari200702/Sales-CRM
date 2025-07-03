@@ -5,7 +5,9 @@ const EditEmployee = ({ isOpen, onClose, onSave, employee }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    location:'',
+    language:''
   });
   
 
@@ -16,7 +18,9 @@ const EditEmployee = ({ isOpen, onClose, onSave, employee }) => {
       setFormData({
         firstName: firstName || '',
         lastName: lastName || '',
-        email: employee.email || ''
+        email: employee.email || '',
+        location: employee.location || '',
+        language: employee.language || ''
       });
     }
   }, [employee]);
@@ -85,6 +89,24 @@ const EditEmployee = ({ isOpen, onClose, onSave, employee }) => {
               required
             />
           </div>
+          <div className="formGroup">
+            <label htmlFor="location">Location</label>
+            <input
+              id="location"
+              name="location"
+              value={formData.location}
+              disabled
+            />
+        </div>
+        <div className="formGroup">
+          <label htmlFor="languages">Preferred Language</label>
+          <input
+            id="languages"
+            name="languages"
+            value={formData.language}
+            disabled
+          />
+        </div>
         </div>
 
         <div className="modalFooter">
